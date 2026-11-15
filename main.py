@@ -1,13 +1,11 @@
-ips = [
-    "192.168.1.3", "10.0.0.5", "192.168.1.1",
-    "172.16.4.1", "10.0.0.5", "8.8.8.8"
-]
+def fibonacci():
 
-# Через множество (быстро)
-unique_ips = set(ips)
+    a, b = 0, 1
+    while True:
+        yield a # возвращает число и засыпает до следующего вызова
+        a, b = b, a + b # сдвиг: следующее a = b, следующее b = a + b
+#создаём генератор
+fib = fibonacci()
 
-# Сортировка (сначала по первому октету)
-sorted_ips = sorted(unique_ips, key=lambda ip: tuple(map(int, ip.split('.'))))
-
-for ip in sorted_ips:
-    print(ip)
+for _ in range(10):
+    print(next(fib), end=" ")# next() просит следующее число
