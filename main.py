@@ -1,19 +1,20 @@
-# Создаем пустой словарь (телефонную книгу)
-phonebook = {}
+inventory = {}
 
-#  Добавление контакта
-phonebook["Анна"] = "+7 900 123 45 67"
-phonebook["Иван"] = "+7 911 765 43 21"
+def add_item(item, count):
+    inventory[item] = inventory.get(item, 0) + count
 
-#  Поиск контакта
-name= "Анна"
-if name in phonebook:
-    print(f"Телефон {name}: {phonebook[name]}")
-else:
-    print("Контакт не найден")
+def remove_item(item, count):
+    if item in inventory:
+        inventory[item] -= count
+        if inventory[item] <= 0:
+            del inventory[item]
 
-#  Удаление контакта
-# Метод pop безопасно удаляет
-phonebook.pop("Иван")
+def update_item(item, count):
+    inventory[item] = count
 
-print("Текущая книга:", phonebook)
+# Пример использования
+add_item("яблоки", 10)
+add_item("бананы", 5)
+remove_item("яблоки", 3)
+update_item("бананы", 20)
+print(inventory)
