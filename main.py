@@ -1,11 +1,19 @@
-def fibonacci():
+# Создаем пустой словарь (телефонную книгу)
+phonebook = {}
 
-    a, b = 0, 1
-    while True:
-        yield a # возвращает число и засыпает до следующего вызова
-        a, b = b, a + b # сдвиг: следующее a = b, следующее b = a + b
-#создаём генератор
-fib = fibonacci()
+#  Добавление контакта
+phonebook["Анна"] = "+7 900 123 45 67"
+phonebook["Иван"] = "+7 911 765 43 21"
 
-for _ in range(10):
-    print(next(fib), end=" ")# next() просит следующее число
+#  Поиск контакта
+name= "Анна"
+if name in phonebook:
+    print(f"Телефон {name}: {phonebook[name]}")
+else:
+    print("Контакт не найден")
+
+#  Удаление контакта
+# Метод pop безопасно удаляет
+phonebook.pop("Иван")
+
+print("Текущая книга:", phonebook)
