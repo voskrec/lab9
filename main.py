@@ -1,20 +1,10 @@
-inventory = {}
+text1 = "Это простой текст для проверки"
+text2 = "Текст для проверки пересечения слов"
 
-def add_item(item, count):
-    inventory[item] = inventory.get(item, 0) + count
+# Приводим к нижнему регистру, разбиваем на слова и создаем множества
+words1 = set(text1.lower().split())
+words2 = set(text2.lower().split())
 
-def remove_item(item, count):
-    if item in inventory:
-        inventory[item] -= count
-        if inventory[item] <= 0:
-            del inventory[item]
-
-def update_item(item, count):
-    inventory[item] = count
-
-# Пример использования
-add_item("яблоки", 10)
-add_item("бананы", 5)
-remove_item("яблоки", 3)
-update_item("бананы", 20)
-print(inventory)
+# Пересечение (общие слова)
+common_words = words1 & words2
+print("Общие слова:", common_words)
