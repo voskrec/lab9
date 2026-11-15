@@ -1,10 +1,11 @@
-text1 = "Это простой текст для проверки"
-text2 = "Текст для проверки пересечения слов"
+def batch_generator(iterable, size):
+    # Проходим по списку с шагом size
+    for i in range(0, len(iterable), size):
+        # yield возвращает кусочек списка и "засыпает"
+        yield iterable[i:i + size]
 
-# Приводим к нижнему регистру, разбиваем на слова и создаем множества
-words1 = set(text1.lower().split())
-words2 = set(text2.lower().split())
-
-# Пересечение (общие слова)
-common_words = words1 & words2
-print("Общие слова:", common_words)
+# Пример использования
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print("Разбиение на куски по 3:")
+for batch in batch_generator(my_list, 3):
+    print(batch)
